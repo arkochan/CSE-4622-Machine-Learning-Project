@@ -1,9 +1,12 @@
 .imagebox {
-    min-width: 250px;
-    height: 250px;
+    max-width: 250px;
+    max-height: 250px;
+    min-width: 200px;
+    min-height: 200px;
     border: 2px solid gray;
     text-align: center;
     border-radius: 5px;
+    
 }
 
 .imagesection--container {}
@@ -16,6 +19,9 @@
 
 }
 
+.imagesection--header {
+    text-align: center;
+}
 
 .process--button {
     height: 40px;

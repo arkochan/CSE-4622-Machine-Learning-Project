@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Rest_API',
+      'corsheaders',
     
 ]
 
 MEDIA_ROOT = os.path.join('E:\\ML_Project\\ML_Model', 'media')
 MEDIA_URL = '/media/'
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 MIDDLEWARE = [
@@ -54,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+      'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'DjangoApp.urls'

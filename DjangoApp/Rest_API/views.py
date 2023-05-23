@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
 def upload_image(request):
+    print(request.FILES)
     if request.method == 'POST' and request.FILES.get('image'):
         image = request.FILES['image']
         file_path = os.path.join(settings.MEDIA_ROOT, 'images', image.name)
