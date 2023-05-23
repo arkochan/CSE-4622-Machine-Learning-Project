@@ -43,8 +43,10 @@ INSTALLED_APPS = [
     
 ]
 
-MEDIA_ROOT = os.path.join('E:\\ML_Project\\ML_Model', 'media')
+ML_DIR =os.path.join(Path(__file__).resolve().parent.parent.parent,'ML_Model')
+MEDIA_ROOT =os.path.join(ML_DIR ,'media' )
 MEDIA_URL = '/media/'
+
 CORS_ORIGIN_ALLOW_ALL = True
 
 
