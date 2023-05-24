@@ -7,6 +7,7 @@ export default function ImageSection() {
     var img;
     const [selectedImage, setSelectedImage] = useState(null);
     const [selectedImageFile, setSelectedImageFile] = useState(null);
+    const [outputImageFile, setOutputImageFile] = useState(null);
 
     const handleImageChange = (event) => {
         const file = event.target.files[0];
@@ -23,7 +24,7 @@ export default function ImageSection() {
             axios.post(BASE_URL + '/upload-image/', formData)
                 .then(response => {
                     // Handle the response after successful image upload
-                    console.log(response.data);
+                    setOutputImageFile(response.data.outputImagePath);
                 })
                 .catch(error => {
                     // Handle any errors that occurred during the image upload
@@ -41,13 +42,16 @@ export default function ImageSection() {
             <div className="imageframe--container">
 
                 {!selectedImage && <div className="imagebox">
-                    Select and Image 
+                    Select and Image
                 </div>}
                 {selectedImage && <img className="imagebox" src={selectedImage} alt="Selected" />}
                 <button onClick={handleUpload} className='process--button'>Process</button>
-                <div className="imagebox">
-                    Right
-                </div>
+
+                {!outputImageFile && <div className="imagebox">
+                    Output Image
+                </div>}
+                {outputImageFile && <img className="imagebox" src={outputImageFile} alt="Selected" />}
+
             </div>
             <input type="file" accept="image/*" onChange={handleImageChange} />
         </div >
