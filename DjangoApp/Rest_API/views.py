@@ -26,12 +26,11 @@ def upload_image(request):
                 file.write(chunk)
         
         
-        #Runs ml init 
-        outputImagePath = callback.callback_function(file_path)
+        
         
         print(utils.toOutput( image.name))
 
-        return JsonResponse({'outputImagePath':'http://localhost:8000/media/'+utils.toOutput( image.name)})
+        return JsonResponse({'BaseImagePath':'http://localhost:8000/media/'+( image.name)})
     #     if os.path.exists(outputImagePath):
     #         with open(outputImagePath, 'rb') as f:
     #             image_data = f.read()
@@ -46,8 +45,12 @@ def upload_image(request):
 
 from django.shortcuts import get_object_or_404
 
-def serve_image(request, filename):
-    file_path = os.path.join(settings.MEDIA_ROOT, 'images', filename)
+def serve_image(request, type, filename):
+    #Runs ml init 
+    file_path = os.path.join(settings.MEDIA_ROOT, 'images' ,filename)
+    callback.callback_function(file_path, type)
+
+
     if os.path.exists(file_path):
         with open(file_path, 'rb') as f:
             return HttpResponse(f.read(), content_type='image/jpeg')

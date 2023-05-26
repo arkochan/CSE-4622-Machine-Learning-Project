@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import ImageSection from './ImageSection';
+import ImageSection2 from './ImageSection2';
 import Introduction from './Introduction';
 import './App.css';
 
@@ -10,7 +10,7 @@ function App() {
       <p> COOL</p>
       <Header />
       <Introduction />
-      <ImageSection />
+      <ImageSection2 />
 
     </>
   )

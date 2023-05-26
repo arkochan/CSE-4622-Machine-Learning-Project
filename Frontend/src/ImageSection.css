@@ -1,30 +1,36 @@
-.imagebox {
+.image--frame {
+    margin: auto;
     max-width: 250px;
     max-height: 250px;
     min-width: 200px;
     min-height: 200px;
     border: 2px solid gray;
     text-align: center;
+
+
+
     border-radius: 5px;
-    
 }
 
-.imagesection--container {}
-
-.imageframe--container {
+.inputimage--container {
+    width: 100%;
     display: flex;
-    max-width: 700px;
-
-    margin: auto;
-
+    flex-direction: column;
+    /* Display contents in a vertical direction */
+    justify-content: center;
+    /* Horizontally center the contents */
+    align-items: center;
+    /* Vertically center the contents */
 }
 
-.imagesection--header {
-    text-align: center;
+.outputimage--container {
+    display: flex;
+    justify-content: space-around;
+    margin: 100px 50px;
 }
 
-.process--button {
-    height: 40px;
-    width: 100px;
-    margin: auto;
+.hiddeninput {
+    display: none
 }
+
+;

@@ -8,9 +8,9 @@ import ML
 
 
 
-def callback_function(inputImageFilePath):
-    output_file_path = utils.toOutput(inputImageFilePath)
-
-    ML.model_chain_starter(inputImageFilePath, output_file_path)
+def callback_function(inputImageFilePath , outputType):
+    
+    
+    output_file_path = ML.model_chain_starter(inputImageFilePath, outputType)
     
     return output_file_path;
