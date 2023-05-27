@@ -47,7 +47,7 @@ from django.shortcuts import get_object_or_404
 
 def serve_image(request, type, filename):
     #Runs ml init 
-    file_path = os.path.join(settings.MEDIA_ROOT, 'images' ,filename)
+    file_path = os.path.join(settings.MEDIA_ROOT, 'images',type  ,filename)
     callback.callback_function(file_path, type)
 
 
