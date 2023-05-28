@@ -11,24 +11,43 @@ import { uploadImage } from './api'
 
 export default function ImageSection2() {
 
-    const [selectedImageFile, setSelectedImageFile] = useState();
+
+    const [selectedImageFileName, setSelectedImageFileName] = useState();
     const [selectedImageUrl, setSelectedImageUrl] = useState();
     const [uploadedKey, setuploadedKey] = useState(null);
 
+    const handleImageSelect = (event) => {
+        const imagefile = event.target.files[0];
+        setSelectedImageFileName(event.target.files[0].name);
+        console.log(selectedImageFileName);
+
+        if (imagefile) {
+            console.log("this runs");
+            setSelectedImageUrl(URL.createObjectURL(imagefile)); //render
+            console.log(selectedImageUrl);
+            uploadImage(imagefile).then((uploadedImagePath) => {
+                console.log(uploadedImagePath)
+                BASE_IMAGE = uploadedImagePath;
+                console.log("BASE IMAGE: ", BASE_IMAGE);
+            }); //upload
+
+
+        }
+    }
 
 
 
     return (
         <div className='imagesection--container'>
             <div className="inputimage--container">
-                <InputImageFrame imgSrc={selectedImageUrl} text="Select image to process" />
+                <InputImageFrame imgSrc={selectedImageUrl} imgChange={handleImageSelect} text="Select image to process" />
 
             </div>
             <div className="outputimage--container">
-                <OutputImageFrame text="GAN1" />
-                <OutputImageFrame text="GAN2" />
-                <OutputImageFrame text="GAN3" />
-                <OutputImageFrame text="GAN4" />
+                <OutputImageFrame imgName={selectedImageFileName} text="GAN1" />
+                <OutputImageFrame imgName={selectedImageFileName} text="GAN2" />
+                <OutputImageFrame imgName={selectedImageFileName} text="GAN3" />
+                <OutputImageFrame imgName={selectedImageFileName} text="GAN4" />
             </div>
 
 

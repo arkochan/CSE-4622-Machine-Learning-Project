@@ -11,41 +11,23 @@ export default function InputImageFrame(props) {
     const fileInputRef = React.useRef(null);
 
 
-    const [imageUrl, setImageUrl] = useState(props.imgSrc);
-    const [image, setImage] = useState(null);
-
-    const handleImageSelect = (event) => {
-        const imagefile = event.target.files[0];
-
-        if (imagefile) {
-
-            setImageUrl(URL.createObjectURL(imagefile)); //render
-            uploadImage(imagefile).then((uploadedImagePath) => {
-                BASE_IMAGE = uploadedImagePath;
-                console.log("BASE IMAGE: ", BASE_IMAGE);
-            }); //upload
-
-
-        }
-    }
 
     const handleClickImageSelect = (event) => {
         fileInputRef.current.click();
 
 
     }
-
-    console.log(imageUrl);
+    console.log("simage", props.imgSrc);
 
     return (
 
         <div  >
 
-            {imageUrl ?
-                (<img className='image--frame' src={imageUrl} onClick={handleClickImageSelect} />) :
+            {props.imgSrc ?
+                (<img className='image--frame' src={props.imgSrc} onClick={handleClickImageSelect} />) :
 
                 (<p onClick={handleClickImageSelect} className='image--frame' >{props.text}</p>)}
-            <input className='hiddeninput' type="file" ref={fileInputRef} onChange={handleImageSelect} />
+            <input className='hiddeninput' type="file" ref={fileInputRef} onChange={props.imgChange} />
 
         </div>
 

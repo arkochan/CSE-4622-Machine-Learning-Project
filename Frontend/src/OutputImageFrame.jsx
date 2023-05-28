@@ -16,7 +16,7 @@ export default function OutputImageFrame(props) {
         console.log('got ex');
 
         // setImageUrl('vite.svg');
-        setImageUrl(appendBaseImageUrl(props.text));
+        setImageUrl(appendBaseImageUrl(props.text, props.imgName));
         // setImageUrl(props.imgSrc);
     }
 

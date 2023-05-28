@@ -9,9 +9,12 @@ export const uploadImage = async (imageFile) => {
 
         try {
             const response = await axios.post(`${BASE_URL}/upload-image/`, formData);
-            const uploadedImagePath = response.data.outputImagePath;
-            console.log("response", uploadedImagePath);
+
+
+            const uploadedImagePath = response.data.BaseImagePath;
+            console.log(uploadedImagePath);
             return uploadedImagePath;
+
         } catch (error) {
             console.error(error);
             return null;
