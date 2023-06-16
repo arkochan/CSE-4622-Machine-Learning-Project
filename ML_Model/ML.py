@@ -1,6 +1,6 @@
 from PIL import Image,ImageEnhance
 from utils import toOutput
-
+from posty import my_view
 typeArr = [
     'GAN1',
     'GAN2',
@@ -27,20 +27,15 @@ def model_chain_starter(inputFilepath, outputFilepath, type):
 
 def gan1(image_path,output_path ):
     print("gan1 called")
-    image = Image.open(image_path)
-    # Convert the image to grayscale
-    gray_image = ImageEnhance.Color(image).enhance(2.0)
-    # Save the grayscale image
-    gray_image.save(output_path)
+    # image = Image.open(image_path)
+    # # Convert the image to grayscale
+    # gray_image = ImageEnhance.Color(image).enhance(2.0)
+    # # Save the grayscale image
+    # gray_image.save(output_path)
     
     error =0## ?
-
-    if error:
-            print("outputpath is" +  output_path)
-            return "error" 
-    else:
-        print(output_path)
-        return output_path
+    my_view(output_path)
+    return output_path
     
 def gan2(image_path,output_path ):
     image = Image.open(image_path)

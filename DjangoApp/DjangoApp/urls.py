@@ -4,7 +4,7 @@ from Rest_API import views
 
 urlpatterns = [
     # Other URL patterns
-    path('upload-image/', csrf_exempt(views.upload_image), name='upload_image'),
+    path('upload-image/', views.upload_image, name='upload_image'),
     path('media/<str:filename>', views.serve_image, name='serve_image'),
     path('media/<str:type>/<str:filename>', views.serve_image, name='serve_image')
 ]

@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import OutputImageFrame from './OutputImageFrame'
+import OutputImageFrame2 from './OutputImageFrame2'
 import InputImageFrame from './InputImageFrame';
 import './ImageSection.css'
 import axios from 'axios';
 const BASE_URL = 'http://127.0.0.1:8000';
+import { useWindowSize } from '@react-hook/window-size'
 
 import { uploadImage } from './api'
 
@@ -15,6 +17,8 @@ export default function ImageSection2() {
     const [selectedImageFileName, setSelectedImageFileName] = useState();
     const [selectedImageUrl, setSelectedImageUrl] = useState();
     const [uploadedKey, setuploadedKey] = useState(null);
+    const [width, height] = useWindowSize()
+
 
     const handleImageSelect = (event) => {
         const imagefile = event.target.files[0];
@@ -34,6 +38,19 @@ export default function ImageSection2() {
 
         }
     }
+    useEffect(() => {
+        const handleMouseMove = (event) => {
+            const { clientX, clientY } = event;
+            console.log(`Cursor position: X=${clientX - width / 2 + 100}, Y=${clientY - 100}`);
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+
+        // Clean up the event listener on component unmount
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, []);
 
 
 
@@ -44,7 +61,7 @@ export default function ImageSection2() {
 
             </div>
             <div className="outputimage--container">
-                <OutputImageFrame imgName={selectedImageFileName} text="GAN1" />
+                <OutputImageFrame2 imgName={selectedImageFileName} text="GAN1" />
                 <OutputImageFrame imgName={selectedImageFileName} text="GAN2" />
                 <OutputImageFrame imgName={selectedImageFileName} text="GAN3" />
                 <OutputImageFrame imgName={selectedImageFileName} text="GAN4" />

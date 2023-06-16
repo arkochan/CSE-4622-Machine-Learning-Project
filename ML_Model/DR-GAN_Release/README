@@ -1,0 +1,85 @@
+Requirement:
+---------------------
+- Tensorflow 1.0
+- SciPy
+
+
+
+DR_GAN Model:
+-----------------------
+
+Usage:
+
+1. Using the whole network
+
+	rotated_image, feature, coefficient  = dr_gan.test(img, return_img = True)
+
+	Inputs:
+	  - img: RGB face images as shape 96x96x3 in range [0,255]
+	         The face should be coarsely align using 5 landmarks: two eyes centers, mouth center, left-most and right-most landmark
+	         Please see Img_cropping/example.jpg file and /Img_cropping/preprocessingAsDaYong.m script 
+	  - return_img: boolean value whether return rotated_img
+
+	Outputs:
+	  - rotated_image: frontalized face image
+	  - feature : 320d-vector identity representation
+	  - coefficient: confident coefficient scalar
+
+	To obtain fused feature representation from multiple images, each image can be processed seperately. The fused feature representation is calculated as weighted averaged of all representations using coefficients as weights
+
+
+2. Using encoder only
+
+	feature, coefficient = dr_gan.test_encoder(img)
+
+	Inputs:
+	  - img: RGB face images as shape 96x96x3 in range [0,255]. (Please see above)
+
+	Outputs:
+	  - feature : 320d-vector identity representation
+	  - coefficient: confident coefficient scalar
+
+
+3. Using decoder only
+	rotated_img = dr_gan.test_decoder(feature)
+
+	Inputs:
+	  - feature : 320d-vector identity representation, which can be an output of encoder or weighted average of multiple features.
+
+	Outputs:
+	  - rotated_image: frontalized face image as shape 96x96x3 in range [0,1]
+	
+
+
+Running DR_GAN demo example:
+---------------------------
+
+Step 1 (Optional): Crop image
+- Using matlab function /Img_cropping/preprocessingAsDaYong.m to crop image using 5 landmarks as in example.jpg file
+- /Img_cropping/main.m provide an simple interative gui to label  landmarks and crop image
+
+Step 2: Run DR-GAN model
+
+python main_DR_GAN.py --gpu <gpu_id> --input <input_path> --out_prefix <output_prefix>
+
+Output:
+Rotated image: <output_prefix>_img.png
+Feature file: <output_prefix>_feature.txt
+Coefficient:  <output_prefix>_coefficient.txt
+
+Example: python main_DR_GAN.py --gpu 0 --input ./img_in.png --out_prefix ./out_
+
+
+
+Citations
+---------------------
+If you use this source code, please cite to the papers:
+
+"Disentangled Representation Learning GAN for Pose-Invariant Face Recognition"
+Luan Tran, Xi Yin, Xiaoming Liu
+In Proceeding of IEEE Computer Vision and Pattern Recognition (CVPR 2017), Honolulu, HI, Jul. 2017 (Oral presentation) 
+
+"Representation Learning by Rotating Your Faces"
+Luan Tran, Xi Yin, Xiaoming Liu
+https://arxiv.org/abs/1705.11136
+
