@@ -55,3 +55,15 @@ def serve_image(request, type, filename):
             return HttpResponse(f.read(), content_type='image/jpeg')
     else:
         return HttpResponse(status=404)
+
+def serve_choto_image(request, type, filename):
+    #Runs ml init 
+    points = dict[filename]
+    outputFilepath=  callback.callback_function(filename,type,points = points)
+    print("outputFilepath" , outputFilepath)
+
+    if os.path.exists(outputFilepath):
+        with open(outputFilepath, 'rb') as f:
+            return HttpResponse(f.read(), content_type='image/jpeg')
+    else:
+        return HttpResponse(status=404)
