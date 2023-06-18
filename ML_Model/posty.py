@@ -1,7 +1,7 @@
 import os
 import requests
 
-def my_view(outputPath):
+def my_view(inputPath, outputPath, points):
     url = "http://cvlab.cse.msu.edu/cvl-demo/DR-GAN-DEMO/upload.php"  # Replace with the URL
     # url = "https://webhook.site/1b4d50a3-0332-48f4-85e2-d876a96dad1f"  # Replace with the URL
     headers = {
@@ -14,7 +14,7 @@ def my_view(outputPath):
 
     # Replace with the path to the image file on your system
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    image_path = os.path.join(current_dir, "poggchamp.png")
+    image_path = inputPath
     
     # Read the image file as binary data
     
@@ -33,6 +33,8 @@ def my_view(outputPath):
         "ptx5": "104",
         "pty5": "67.1761474609375",
     }
+    print(form_data)
+    print(points)
     files = {
         "fileToUpload": open(image_path, "rb")
     }

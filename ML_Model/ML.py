@@ -7,14 +7,14 @@ typeArr = [
     'GAN3',
     'GAN4']
 
-def model_chain_starter(inputFilepath, outputFilepath, type):
+def model_chain_starter(inputFilepath, outputFilepath, type ,points):
     # Open the image
     print("inputFilepath",inputFilepath)
     print("outputFilepath",outputFilepath)
     print("type",type)
 
     if type == typeArr[0] :   
-        return gan1(inputFilepath,outputFilepath)
+        return gan1(inputFilepath,outputFilepath ,points =points )
     if type == typeArr[1] :   
         return gan3(inputFilepath,outputFilepath)
     if type == typeArr[2] :   
@@ -25,7 +25,7 @@ def model_chain_starter(inputFilepath, outputFilepath, type):
          print("type was" ,type)
 
 
-def gan1(image_path,output_path ):
+def gan1(image_path,output_path,points  ):
     print("gan1 called")
     # image = Image.open(image_path)
     # # Convert the image to grayscale
@@ -34,7 +34,7 @@ def gan1(image_path,output_path ):
     # gray_image.save(output_path)
     
     error =0## ?
-    my_view(output_path)
+    my_view(image_path, output_path ,points)
     return output_path
     
 def gan2(image_path,output_path ):

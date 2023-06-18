@@ -1,9 +1,7 @@
 .image--frame {
     margin: auto;
-    max-width: 250px;
-    max-height: 250px;
-    min-width: 200px;
-    min-height: 200px;
+    width: 200px;
+    
     border: 2px solid gray;
     text-align: center;
 
@@ -11,26 +9,29 @@
 
     border-radius: 5px;
 }
-
-.inputimage--container {
-    width: 100%;
+.imagesection--container
+{
     display: flex;
-    flex-direction: column;
-    /* Display contents in a vertical direction */
-    justify-content: center;
-    /* Horizontally center the contents */
-    align-items: center;
-    /* Vertically center the contents */
+    direction: horizontal;
+    justify-content: space-evenly;
+}
+.inputimage--container {
+    
+    
+    width: 200;
 }
 
 .outputimage--container {
     display: flex;
     justify-content: space-around;
-    margin: 100px 50px;
+   
 }
 
 .hiddeninput {
-    display: none
+    display: none;
+    
+
+
+
 }
 
-;

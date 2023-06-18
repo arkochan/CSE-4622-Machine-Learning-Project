@@ -11,13 +11,12 @@ export default function InputImageFrame(props) {
     const handleClickImageSelect = (event) => {
         fileInputRef.current.click();
     }
-    console.log("simage", props.imgSrc);
     return (
-        <div  >
+        <div className="inputimage--container " >
             {props.imgSrc ?
-                (<img className='image--frame' src={props.imgSrc} onClick={handleClickImageSelect} />) :
+                (<img className='image--frame inputimage--container' src={props.imgSrc} onClick={props.recordClick} />) :
                 (<p onClick={handleClickImageSelect} className='image--frame' >{props.text}</p>)}
             <input className='hiddeninput' type="file" ref={fileInputRef} onChange={props.imgChange} />
-        </div>
+        </div >
     )
 }

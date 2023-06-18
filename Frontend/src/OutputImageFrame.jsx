@@ -20,7 +20,7 @@ export default function OutputImageFrame(props) {
         // setImageUrl(props.imgSrc);
     }
 
-    console.log(imageUrl);
+
 
     return (
 

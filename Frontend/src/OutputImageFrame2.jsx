@@ -16,13 +16,12 @@ export default function OutputImageFrame2(props) {
         // setImageUrl(props.imgSrc);
 
     }
-    
 
-    
 
-    console.log(imageUrl);
+
+
     return (
-        <div  >
+        <div className='inputimage--container' >
             {imageUrl ?
                 (<img onClick={handleImageRequest} className='image--frame' src={imageUrl} />) :
                 (<p onClick={handleImageRequest} className='image--frame' >{props.text}</p>)}
