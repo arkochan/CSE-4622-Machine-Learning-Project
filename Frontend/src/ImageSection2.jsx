@@ -82,7 +82,7 @@ export default function ImageSection2() {
         if (points.length === 5)
             (setPoints(prev => [[cursorX, cursorY]]))
         else
-            setPoints(prev => [...prev, [cursorX, cursorY]])
+            setPoints(prev => [...prev, [Math.round((imageX / 202) * (cursorX - (width / 2 - 101))), cursorY]])
         console.log(points)
 
 
@@ -101,7 +101,7 @@ export default function ImageSection2() {
 
             </div>
             <div> {imageX}x{imageY}</div>
-            
+
             <div> Current cursor X = {Math.round((imageX / 202) * (cursorX - (width / 2 - 101)))}  Y ={cursorY} </div>
             <div> </div>
 
@@ -112,7 +112,7 @@ export default function ImageSection2() {
             <div className='imagesection--container'>
 
                 <div className="inputimage--container">
-                    <OutputImageFrame2 imgName={selectedImageFileName} text="GAN1" />
+                    <OutputImageFrame2 imgName={selectedImageFileName} text="cropped" />
                 </div>
                 <div className="inputimage--container">
                     <OutputImageFrame2 imgName={selectedImageFileName} text="GAN1" />
