@@ -13,6 +13,9 @@ def model_chain_starter(inputFilepath, outputFilepath, type ,points):
     print("outputFilepath",outputFilepath)
     print("type",type)
 
+    print("model_chain_starter points")
+    print(points)
+
     if type == typeArr[0] :   
         return gan1(inputFilepath,outputFilepath ,points =points )
     if type == typeArr[1] :   
@@ -26,6 +29,8 @@ def model_chain_starter(inputFilepath, outputFilepath, type ,points):
 
 
 def gan1(image_path,output_path,points  ):
+    print("model_chain_starter points")
+    print(points)
     print("gan1 called")
     # image = Image.open(image_path)
     # # Convert the image to grayscale

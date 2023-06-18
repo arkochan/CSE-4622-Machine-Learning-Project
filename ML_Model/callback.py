@@ -18,7 +18,8 @@ def callback_function(filename, type, points):
    
     print("inputFilepathxxxxxxxxxxxx", inputFilepath)
     print("outputFilepathxxxxxxxxxxx" , outputFilepath)
-    
+    print("callback_function points")
+    print(points)    
     proceesed_output_file_path = ML.model_chain_starter(inputFilepath, outputFilepath, type ,points = points)
     print("proceesed_output_file_path" , proceesed_output_file_path)
     return proceesed_output_file_path;

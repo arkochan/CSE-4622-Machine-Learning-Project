@@ -33,7 +33,10 @@ def my_view(inputPath, outputPath, points):
         "ptx5": "104",
         "pty5": "67.1761474609375",
     }
+    form_data =points 
     print(form_data)
+
+    print("points")
     print(points)
     files = {
         "fileToUpload": open(image_path, "rb")

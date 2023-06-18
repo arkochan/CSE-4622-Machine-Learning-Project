@@ -46,7 +46,7 @@ from django.shortcuts import get_object_or_404
 
 def serve_image(request, type, filename):
     #Runs ml init 
-    points = print(dict[filename])
+    points = dict[filename]
     outputFilepath=  callback.callback_function(filename,type,points = points)
     print("outputFilepath" , outputFilepath)
 
